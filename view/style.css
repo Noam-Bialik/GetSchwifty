@@ -1,8 +1,15 @@
 table, th, td {
     
-    height: 50px;
-    width: 150px;
+    height: 100px;
+    width: 400px;
+    border: 3px solid green;
   }
   th, td {
     background-color: #aec8e6;
+  }
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
   }

@@ -3,6 +3,7 @@
 console.log("bootstreper.js called");
 
 class Bootstreper{
+    
     constructor(){
         this.view = new ViewBootstraper();
         this.model = new Model();

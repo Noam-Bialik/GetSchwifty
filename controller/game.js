@@ -79,6 +79,29 @@ class Game{
         let temp = this.table[xRow][xColumn];
         this.table[xRow][xColumn] = this.table[yRow][yColumn];
         this.table[yRow][yColumn] = temp;
+
+    }
+  
+    shuffle(){
+        this.swapRandomly(this.table.length*this.table.length);
+    }
+
+    swapRandomly(times){
+        let from = { x : 0 , y : 0 };
+        let to = { x : 0 , y : 0 }; 
+        for(let i = 0 ; i < times ; i++){
+            from.x = this.getRandomUpTo(this.table.length);
+            from.y = this.getRandomUpTo(this.table.length);
+            to.x = this.getRandomUpTo(this.table.length);
+            to.y = this.getRandomUpTo(this.table.length);
+            if(this.table[from.x][from.y] != 0 && this.table[to.x][to.y] != 0){
+                this.swap( from.x, from.y, to.x, to.y );
+            }
+        }
+    }
+
+    getRandomUpTo(number){
+        return Math.floor(Math.random()*10*number)%number;
     }
   
 }
