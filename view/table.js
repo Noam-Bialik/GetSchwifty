@@ -12,7 +12,10 @@ class Table{
             let elementRow = document.createElement('tr');
             for (let j = 0 ; j < pieces[i].length ; j++){
                 let elementPiece = document.createElement('th');
-                elementPiece.append(pieces[i][j]);
+                let piece = pieces[i][j];
+                if (piece != 0){
+                    elementPiece.append(piece)
+                }
                 elementRow.append(elementPiece);
                 console.log(elementPiece);
             }
