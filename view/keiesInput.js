@@ -6,11 +6,25 @@ class KeiesInput{
     constructor(element){
         this.element = element;
         this.handlers = {}
+        this.setOnKeiesDown();
+    }
+    
+    setOnKeiesDown(){
+        document.onkeydown = (e) => {
+            e = e || window.event;
+            try{
+            this.handlers[e.which]();
+            }
+            catch(error){
+                console.log("onkeydown: not support");
+            }
+        }
     }
 
     setOnKeyDown(key, handler){
-        this.handlers.key = handler;
-        this.element.addEventListener('keydown', (e) => this.handlers[e.key]())
+        console.log(key + " : " + handler);
+        this.handlers[key] = handler;
+        console.log(this.handlers);
     }
 }
 
