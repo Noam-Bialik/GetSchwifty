@@ -65,9 +65,8 @@ class View{
             handler(this.tableSize.value);
       });
     }
-    
-     
-    
 
-
+    showPopupMessage(txt){
+        alert(txt);
+    }
 }
