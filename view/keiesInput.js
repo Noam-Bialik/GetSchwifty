@@ -5,7 +5,7 @@ console.log("keiesInput called");
 class KeiesInput{
     constructor(element){
         this.element = element;
-        this.handlers = {}
+        this.handlers = {};
         this.setOnKeiesDown();
     }
     
@@ -16,15 +16,16 @@ class KeiesInput{
             this.handlers[e.which]();
             }
             catch(error){
+                console.log(error);
                 console.log("onkeydown: not support");
             }
         }
     }
 
     setOnKeyDown(key, handler){
-        console.log(key + " : " + handler);
+        console.log("setOnKeyDown : handlers : \n" + key + " : " + handler);
         this.handlers[key] = handler;
-        console.log(this.handlers);
+        console.log("setOnKeyDown : handlers : \n" + this.handlers);
     }
 }
 
