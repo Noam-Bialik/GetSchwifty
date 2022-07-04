@@ -1,8 +1,8 @@
 table, th, td {
-    border-collapse: collapse;
+    
     height: 50px;
     width: 150px;
   }
   th, td {
-    background-color: #96D4D4;
+    background-color: #aec8e6;
   }
