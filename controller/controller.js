@@ -2,32 +2,44 @@
 console.log("controller.js called");
 
 class Controller{
-    constructor(view, model){
+    constructor(view, model, game){
         this.view = view;
         this.model = model;
+        this.game = game;
         this.starter();
         }
 
     starter(){
-        let a = [[1,2,3],[4,5,6],[7,8,9]]
-        this.view.showTable(a);
+        this.view.bindButton(this.startGame);
+        //this.table = this.game.newGame(5);
+        //console.log(this.table);
+        //this.view.showTable(this.table);
         this.view.setOnArrowRight(this.swipeRight);
         this.view.setOnArrowLeft(this.swipeLeft);
         this.view.setOnArrowUp(this.swipeUp);
         this.view.setOnArrowDown(this.swipeDown);
     }
 
-    swipeLeft(){
-        console.log("swipe left");
+    startGame = (tableSize) => {
+        this.table = this.game.newGame(tableSize);
+        this.view.showTable(this.table);
     }
-    swipeRight(){
-        console.log("swipe right");
+    
+    swipeLeft = () => {
+        this.table = this.game.swipeLeft();
+        this.view.showTable(this.table);
     }
-    swipeUp(){
-        console.log("swipe up");
+    swipeRight = () => {
+        this.table = this.game.swipeRight();
+        this.view.showTable(this.table);
     }
-    swipeDown(){
-        console.log("swipe down");
+    swipeUp = () => {
+        this.table = this.game.swipeUp();
+        this.view.showTable(this.table);
+    }
+    swipeDown = () => {
+        this.table = this.game.swipeDown();
+        this.view.showTable(this.table);
     }
     
 }
