@@ -1,9 +1,10 @@
 "use strict"
 
 class Game{
+
     constructor(){
         this.table;
-        this.zeroIndexes;
+        this.zeroIndexes = { row:0, column:0 };
     }
 
     newGame(size){    
@@ -16,7 +17,8 @@ class Game{
             }
         }
         table[size-1][size-1] = 0 ;
-        this.zeroIndexes = [size-1, size-1];
+        this.zeroIndexes.row = size-1;
+        this.zeroIndexes.column = size-1;
         this.table = table;
         console.log("Game: newGame: \n" + this.table);
         return this.table;
@@ -28,58 +30,55 @@ class Game{
     }
 
     swipeLeft(){
-        console.log("swipe left");
-        if(this.zeroIndexes[1] > 0){
-            this.swap(this.zeroIndexes[0], this.zeroIndexes[1]-1, this.zeroIndexes[0], this.zeroIndexes[1])
-            this.zeroIndexes = [ this.zeroIndexes[0], this.zeroIndexes[1]-1];
-        }
-        else{
-            console.log("cannot swipe left")
-        }
-        return this.table;
-    }
-    swipeRight(){
         console.log("swipe right");
-        if(this.zeroIndexes[1] < this.table.length-1){
-            this.swap(this.zeroIndexes[0], this.zeroIndexes[1]+1, this.zeroIndexes[0], this.zeroIndexes[1])
-            this.zeroIndexes = [ this.zeroIndexes[0], this.zeroIndexes[1]+1];
+        if(this.zeroIndexes.column < this.table.length-1){
+            this.swap(this.zeroIndexes.row, this.zeroIndexes.column+1, this.zeroIndexes.row, this.zeroIndexes.column)
+            this.zeroIndexes.column = this.zeroIndexes.column+1;
         }
         else{
             console.log("cannot swipe Right")
         }
         return this.table;
     }
-    swipeUp(){
-        console.log("swipe up");
-        if(this.zeroIndexes[0] > 0){
-            this.swap(this.zeroIndexes[0]-1, this.zeroIndexes[1], this.zeroIndexes[0], this.zeroIndexes[1])
-            this.zeroIndexes = [ this.zeroIndexes[0]-1, this.zeroIndexes[1]];
+    swipeRight(){
+        console.log("swipe left");
+        if(this.zeroIndexes.column > 0){
+            this.swap(this.zeroIndexes.row, this.zeroIndexes.column-1, this.zeroIndexes.row, this.zeroIndexes.column)
+            this.zeroIndexes.column = this.zeroIndexes.column-1;
         }
         else{
-            console.log("cannot swipe Up")
+            console.log("cannot swipe left")
         }
         return this.table;
     }
-    swipeDown(){
+    swipeUp(){
         console.log("swipe down");
-        if(this.zeroIndexes[0] < this.table.length-1){
-            this.swap(this.zeroIndexes[0]+1, this.zeroIndexes[1], this.zeroIndexes[0], this.zeroIndexes[1])
-            this.zeroIndexes = [ this.zeroIndexes[0]+1, this.zeroIndexes[1]];
+        if(this.zeroIndexes.row < this.table.length-1){
+            this.swap(this.zeroIndexes.row+1, this.zeroIndexes.column, this.zeroIndexes.row, this.zeroIndexes.column)
+            this.zeroIndexes.row = this.zeroIndexes.row+1;
         }
         else{
             console.log("cannot swipe Down")
         }
         return this.table;
     }
+    swipeDown(){
+        console.log("swipe up");
+        if(this.zeroIndexes.row > 0){
+            this.swap(this.zeroIndexes.row-1, this.zeroIndexes.column, this.zeroIndexes.row, this.zeroIndexes.column)
+            this.zeroIndexes.row = this.zeroIndexes.row-1;
+        }
+        else{
+            console.log("cannot swipe Up")
+        }
+        return this.table;
+    }
 
     swap(xRow, xColumn, yRow, yColumn){
-        console.log("("+xRow+","+xColumn+") ("+yRow+","+yColumn+")");
+        console.log("swap ("+xRow+","+xColumn+") with ("+yRow+","+yColumn+")");
         let temp = this.table[xRow][xColumn];
-        console.log(this.table);
-        console.log("temp -" +temp);
         this.table[xRow][xColumn] = this.table[yRow][yColumn];
         this.table[yRow][yColumn] = temp;
     }
-
-    
+  
 }
