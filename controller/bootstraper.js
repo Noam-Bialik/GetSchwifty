@@ -5,7 +5,8 @@ class Bootstreper{
     constructor(){
         this.view = new ViewBootstraper();
         this.model = null;
-        this.controller = new Controller(this.view, this.model);
+        let game = new Game();
+        this.controller = new Controller(this.view, this.model, game);
     }
 }
 
