@@ -3,11 +3,15 @@
 console.log("view.js called");
 
 class View{
+
     constructor(table, keiesInput){
         this.table = table;
         this.keiesInput = keiesInput;
-        this.tableContainer = this.getElement("#table_container");
-       
+        this.start();
+    }   
+
+    start(){
+        this.tableContainer = this.getElement("#table_container");  
         this.root = this.getElement('#root');
         this.form = this.createElement('form');
         this.tableSize = this.createElement('input');
@@ -20,7 +24,8 @@ class View{
 
     showTable(pieces){
         this.tableContainer.innerHTML = '';
-        this.tableContainer.append(this.table.getTableElement(pieces));
+        let tableElement = this.table.getTableElement(pieces);
+        this.tableContainer.append(tableElement);
     }
 
     getElement(selector) {
